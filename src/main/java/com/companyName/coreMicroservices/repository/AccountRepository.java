@@ -1,6 +1,6 @@
 package com.companyName.coreMicroservices.repository;
 
-import com.companyName.accountMicroservices.repository.entity.Account;
+import com.companyName.coreMicroservices.repository.entity.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
