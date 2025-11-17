@@ -1,6 +1,7 @@
 package com.companyName.coreMicroservices.repository;
 
 import com.companyName.coreMicroservices.repository.entity.Account;
+import com.companyName.coreMicroservices.repository.entity.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,5 +15,8 @@ public interface AccountRepository extends JpaRepository<Account, String> {
     List<Account> findByFkUser(@Param("FkUser")String FkUser);
 
     List<Account> findAll();
+
+    @Query(value="DELETE FROM accounts WHERE FK_USER=:FkUser", nativeQuery = true)
+    List<Payment> deleteaccountByfkUser(@Param("FkUser")String FkUser);
 
 }
