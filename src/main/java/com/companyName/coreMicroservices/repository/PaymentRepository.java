@@ -15,4 +15,7 @@ public interface PaymentRepository extends JpaRepository<Payment, String> {
 
     List<Payment> findAll();
 
+    @Query(value="DELETE FROM payments WHERE FK_USER=:FkUser", nativeQuery = true)
+    List<Payment> deletepaymentByfkUser(@Param("FkUser")String FkUser);
+
 }
