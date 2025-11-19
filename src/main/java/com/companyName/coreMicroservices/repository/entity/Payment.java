@@ -42,12 +42,12 @@ public class Payment {
     @Getter @Setter
     private String currency;
 
-    public Payment(Payment account) { //serve a fare new Payment(account), altrimenti devi fare new Payment(account.getId,account.getName,....)
-        this.id = account.getId();
-        this.transaction_date = account.getTransaction_date();
-        this.transaction_description = account.getTransaction_description();
-        this.fkUser = account.getFkUser();
-        this.amount = account.getAmount();
-        this.currency = account.getCurrency();
+    public Payment(Payment payment) { //serve a fare new Payment(payment), altrimenti devi fare new Payment(payment.getId,payment.getName,....)
+        this.id = payment.getId();
+        this.transaction_date = payment.getTransaction_date();
+        this.transaction_description = payment.getTransaction_description();
+        this.fkUser = payment.getFkUser();
+        this.amount = payment.getAmount();
+        this.currency = payment.getCurrency();
     }
 }
