@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="accounts")
@@ -20,6 +22,14 @@ public class Account {
     @Getter
     @Setter
     private Long id;
+
+    @OneToMany(
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
+    )
+    @JoinColumn(name = "payment_id") // foreign key in payments table
+    private List<Payment> payments = new ArrayList<>();
 
     @Column(name="NAME")
     @Getter @Setter
