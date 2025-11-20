@@ -7,15 +7,15 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface InvoiceRepository extends JpaRepository<Invoice, String> {
-    @Query(value="SELECT * FROM invoices WHERE FK_USER=:FkUser", nativeQuery = true)
-    List<Invoice> getAllInvoicePerUser(@Param("FkUser")String FkUser);
+public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
+    @Query(value="SELECT * FROM invoices WHERE INVOICE_NUMBER=:invoice_number", nativeQuery = true)
+    List<Invoice> getAllInvoicePerUser(@Param("invoice_number")Long invoice_number);
 
-    List<Invoice> findByfkUser(@Param("FkUser")String FkUser);
+    List<Invoice> findByinvoiceNumber(@Param("invoice_number")Long invoice_number);
 
     List<Invoice> findAll();
 
-    @Query(value="DELETE FROM invoices WHERE FK_USER=:FkUser", nativeQuery = true)
-    List<Invoice> deleteinvoiceByfkUser(@Param("FkUser")String FkUser);
+    @Query(value="DELETE FROM invoices WHERE INVOICE_NUMBER=:invoiceNumber", nativeQuery = true)
+    List<Invoice> deleteinvoiceByinvoiceNumber(@Param("invoiceNumber")Long invoiceNumber);
 
 }

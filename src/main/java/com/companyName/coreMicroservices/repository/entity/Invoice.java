@@ -6,8 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="invoices")
@@ -22,32 +22,27 @@ public class Invoice {
     @Setter
     private Long id;
 
-    @Column(name="TRANSACTION_DATE")
+    @Column(name="INVOICE_NUMBER")
     @Getter @Setter
-    private LocalDate transaction_date; //YYYY-mm-dd 2025-09-30
+    private Long invoiceNumber;
 
-    @Column(name="TRANSACTION_DESCRIPTION")
+    @OneToMany(
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
+    )
+    @JoinColumn(name = "payment_id") // foreign key in payments table
     @Getter @Setter
-    private String transaction_description;
+    private List<Payment> payments = new ArrayList<>();
 
-    @Column(name="FK_USER")
-    @Getter @Setter
-    private String fkUser;
-
-    @Column(name="AMOUNT")
-    @Getter @Setter
-    private BigDecimal amount;
-
-    @Column(name="CURRENCY")
-    @Getter @Setter
-    private String currency;
 
     public Invoice(Invoice invoice) { //serve a fare new Invoice(invoice), altrimenti devi fare new Invoice(invoice.getId,invoice.getName,....)
         this.id = invoice.getId();
-        this.transaction_date = invoice.getTransaction_date();
-        this.transaction_description = invoice.getTransaction_description();
-        this.fkUser = invoice.getFkUser();
-        this.amount = invoice.getAmount();
-        this.currency = invoice.getCurrency();
+        this.invoiceNumber = invoice.getInvoiceNumber();
+        this.payments = invoice.getPayments();
+        //for (Payment payment: invoice.payments)
+        //{
+        //    this.payments.add(payment);
+        //}
     }
 }
