@@ -31,7 +31,7 @@ public class Invoice {
             orphanRemoval = true,
             fetch = FetchType.LAZY
     )
-    @JoinColumn(name = "payment_id") // foreign key in payments table
+    @JoinColumn(name = "invoice_id") // foreign key in payments table
     @Getter @Setter
     private List<Payment> payments = new ArrayList<>();
 
