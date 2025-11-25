@@ -23,13 +23,6 @@ public class Account {
     @Setter
     private Long id;
 
-    @OneToMany(
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-            orphanRemoval = true,
-            fetch = FetchType.LAZY
-    )
-    @JoinColumn(name = "payment_id") // foreign key in payments table
-    private List<Payment> payments = new ArrayList<>();
 
     @Column(name="NAME")
     @Getter @Setter
@@ -51,6 +44,15 @@ public class Account {
     @Getter @Setter
     private BigDecimal balance;
 
+    @OneToMany(
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
+    )
+    @JoinColumn(name = "account_id") // foreign key in payments table
+    @Getter @Setter
+    private List<Invoice> invoices = new ArrayList<>();
+
     public Account(Account account) { //serve a fare new Account(account), altrimenti devi fare new Account(account.getId,account.getName,....)
         this.id = account.getId();
         this.name = account.getName();
@@ -58,5 +60,6 @@ public class Account {
         this.email = account.getEmail();
         this.fkUser = account.getFkUser();
         this.balance = account.getBalance();
+        this.invoices = account.getInvoices();
     }
 }
