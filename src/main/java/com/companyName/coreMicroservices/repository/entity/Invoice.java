@@ -36,7 +36,8 @@ public class Invoice {
     private List<Payment> payments = new ArrayList<>();
 
 
-    public Invoice(Invoice invoice) { //serve a fare new Invoice(invoice), altrimenti devi fare new Invoice(invoice.getId,invoice.getName,....)
+    //permette di aggiornare solo gli attibuti valorizzati(diversamente dal costruttore dove possono esserci anche null)
+    public Invoice(Invoice invoice) { //costruttore, serve a fare new Invoice(invoice), altrimenti devi fare new Invoice(invoice.getId,invoice.getName,....)
         this.id = invoice.getId();
         this.invoiceNumber = invoice.getInvoiceNumber();
         this.payments = invoice.getPayments();
@@ -44,5 +45,17 @@ public class Invoice {
         //{
         //    this.payments.add(payment);
         //}
+    }
+
+    public void updateInvoice(Invoice invoice) {
+        if (invoice.getId() != null) {
+            this.id = invoice.getId();
+        }
+        if (invoice.getInvoiceNumber() != null) {
+            this.invoiceNumber = invoice.getInvoiceNumber();
+        }
+        if (invoice.getPayments() != null) {
+            this.payments = invoice.getPayments();
+        }
     }
 }

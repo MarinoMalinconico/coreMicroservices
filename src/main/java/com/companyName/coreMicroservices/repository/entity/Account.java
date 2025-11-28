@@ -53,7 +53,7 @@ public class Account {
     @Getter @Setter
     private List<Invoice> invoices = new ArrayList<>();
 
-    public Account(Account account) { //serve a fare new Account(account), altrimenti devi fare new Account(account.getId,account.getName,....)
+    public Account(Account account) { //costruttore, serve a fare new Account(account), altrimenti devi fare new Account(account.getId,account.getName,....)
         this.id = account.getId();
         this.name = account.getName();
         this.surname = account.getSurname();
@@ -61,5 +61,30 @@ public class Account {
         this.fkUser = account.getFkUser();
         this.balance = account.getBalance();
         this.invoices = account.getInvoices();
+    }
+
+    //permette di aggiornare solo gli attibuti valorizzati(diversamente dal costruttore dove possono esserci anche null)
+    public void updateAccount(Account account) { //serve a fare new Account(account), altrimenti devi fare new Account(account.getId,account.getName,....)
+        if (account.getId() != null) {
+            this.id = account.getId();
+        }
+        if (account.getName() != null) {
+            this.name = account.getName();
+        }
+        if (account.getSurname() != null) {
+            this.surname = account.getSurname();
+        }
+        if (account.getEmail() != null) {
+            this.email = account.getEmail();
+        }
+        if (account.getFkUser() != null) {
+            this.fkUser = account.getFkUser();
+        }
+        if (account.getBalance() != null) {
+            this.balance = account.getBalance();
+        }
+        if (account.getInvoices() != null) {
+            this.invoices = account.getInvoices();
+        }
     }
 }

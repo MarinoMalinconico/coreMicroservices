@@ -42,12 +42,34 @@ public class Payment {
     @Getter @Setter
     private String currency;
 
-    public Payment(Payment payment) { //serve a fare new Payment(payment), altrimenti devi fare new Payment(payment.getId,payment.getName,....)
+    public Payment(Payment payment) { //costruttore, serve a fare new Payment(payment), altrimenti devi fare new Payment(payment.getId,payment.getName,....)
         this.id = payment.getId();
         this.transaction_date = payment.getTransaction_date();
         this.transaction_description = payment.getTransaction_description();
         this.fkUser = payment.getFkUser();
         this.amount = payment.getAmount();
         this.currency = payment.getCurrency();
+    }
+
+    //permette di aggiornare solo gli attibuti valorizzati(diversamente dal costruttore dove possono esserci anche null)
+    public void updatePayment(Payment payment) { //serve a fare new Payment(payment), altrimenti devi fare new Payment(payment.getId,payment.getName,....)
+        if (payment.getId() != null) {
+            this.id = payment.getId();
+        }
+        if (payment.getTransaction_date() != null) {
+            this.transaction_date = payment.getTransaction_date();
+        }
+        if (payment.getTransaction_description() != null) {
+            this.transaction_description = payment.getTransaction_description();
+        }
+        if (payment.getFkUser() != null) {
+            this.fkUser = payment.getFkUser();
+        }
+        if (payment.getAmount() != null) {
+            this.amount = payment.getAmount();
+        }
+        if (payment.getCurrency() != null) {
+            this.currency = payment.getCurrency();
+        }
     }
 }
