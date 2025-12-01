@@ -41,10 +41,6 @@ public class Invoice {
         this.id = invoice.getId();
         this.invoiceNumber = invoice.getInvoiceNumber();
         this.payments = invoice.getPayments();
-        //for (Payment payment: invoice.payments)
-        //{
-        //    this.payments.add(payment);
-        //}
     }
 
     public void updateInvoice(Invoice invoice) {

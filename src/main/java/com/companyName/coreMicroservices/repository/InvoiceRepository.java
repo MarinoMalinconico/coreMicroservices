@@ -15,7 +15,4 @@ public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
 
     List<Invoice> findAll();
 
-    @Query(value="DELETE FROM invoices WHERE INVOICE_NUMBER=:invoiceNumber", nativeQuery = true)
-    List<Invoice> deleteinvoiceByinvoiceNumber(@Param("invoiceNumber")Long invoiceNumber);
-
 }

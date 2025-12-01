@@ -16,8 +16,4 @@ public interface AccountRepository extends JpaRepository<Account, String> {
 
     List<Account> findAll();
 
-    //deprecata perchè non permette eliminazione se ci sono elementi collegati, vedi deleteAccountDetailByCf in DelegateImpl
-    @Query(value="DELETE FROM accounts WHERE FK_USER=:FkUser", nativeQuery = true)
-    List<Payment> deleteaccountByfkUser(@Param("FkUser")String FkUser);
-
 }
