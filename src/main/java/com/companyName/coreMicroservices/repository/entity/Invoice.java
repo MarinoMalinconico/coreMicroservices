@@ -27,7 +27,7 @@ public class Invoice {
     private Long invoiceNumber;
 
     @OneToMany(
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+            cascade = {CascadeType.ALL},
             orphanRemoval = true,
             fetch = FetchType.LAZY
     )

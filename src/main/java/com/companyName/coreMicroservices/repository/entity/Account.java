@@ -45,7 +45,7 @@ public class Account {
     private BigDecimal balance;
 
     @OneToMany(
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+            cascade = {CascadeType.ALL},
             orphanRemoval = true,
             fetch = FetchType.LAZY
     )
