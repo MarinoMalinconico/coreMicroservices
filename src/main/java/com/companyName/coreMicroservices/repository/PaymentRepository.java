@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface PaymentRepository extends JpaRepository<Payment, String> {
+public interface PaymentRepository extends JpaRepository<Payment, Long> {
     @Query(value="SELECT * FROM payments WHERE FK_USER=:FkUser", nativeQuery = true)
     List<Payment> getAllPaymentPerUser(@Param("FkUser")String FkUser);
 
