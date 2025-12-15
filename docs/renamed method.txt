@@ -1,0 +1,15 @@
+Invoice
+	controller																IDelegate								repository					Crud repository
+		invoiceDetailBasicResponseByInvoiceNumber								getInvoiceDetail						getAllInvoicePerUser
+																				deprecato collega getInvoiceByInvoiceNumber
+		invoiceDetailBasicResponseParam											getInvoiceDetail						getAllInvoicePerUser
+		deprecato																deprecato 
+		invoiceDetailBasicResponseGET											getInvoiceDetailJPA						findByinvoiceNumber
+		diventa	invoiceDetailBasicResponseByInvoiceNumberPathParam				diventa getInvoiceByInvoiceNumber
+					
+		invoiceDetailBasicResponseGetAll										getAllJPA								findAll
+																				diventa getAllInvoiceList
+		updateInvoiceNumber														updateInvoiceDetail													findById
+		AddPayment																addPaymentToInvoice													findById
+		deleteInvoice															deleteInvoiceDetail													delete
+		DeleteInvoiceByInvoiceNumber											deleteInvoiceDetailByInvoiceNumber									deleteById
