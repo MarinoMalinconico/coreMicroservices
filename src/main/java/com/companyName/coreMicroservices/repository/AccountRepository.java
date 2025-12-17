@@ -9,6 +9,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface AccountRepository extends JpaRepository<Account, Long> {
+
+    //resta come esempio di query esplicita per scopi futuri
     @Query(value="SELECT * FROM accounts WHERE FK_USER=:FkUser", nativeQuery = true)
     List<Account> getAllAccountPerUser(@Param("FkUser")String FkUser);
 

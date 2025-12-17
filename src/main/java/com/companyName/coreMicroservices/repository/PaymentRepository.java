@@ -8,6 +8,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface PaymentRepository extends JpaRepository<Payment, Long> {
+
+    //resta come esempio di query esplicita per scopi futuri
     @Query(value="SELECT * FROM payments WHERE FK_USER=:FkUser", nativeQuery = true)
     List<Payment> getAllPaymentPerUser(@Param("FkUser")String FkUser);
 
